@@ -19,18 +19,34 @@
 
     <!-- Login -->
     <div class="well">
-        <h4>Login</h4>
-        <form action="includes/login.php" method="post">
-            <div class="form-group">
-                <input name="username" type="text" class="form-control" placeholder="Enter Username">
-            </div>
-            <div class="input-group">
-                <input name="password" type="password" class="form-control" placeholder="Enter Password">
+        <?php 
+        //logout form if logged
+        if(isset($_SESSION['username'])){
+        ?>
+            <form action="includes/logout.php" method="post">
                 <span class="input-group-btn">
-                    <button class="btn btn-primary" name="login" type="submit">Submit</button>
+                    <button class="btn btn-primary" name="login" type="submit">Logout</button>
                 </span>
-            </div>
-        </form>
+            </form>
+        <?php
+        //login form if logged out
+        }else{
+        ?>
+            <h4>Login</h4>
+            <form action="includes/login.php" method="post">
+                <div class="form-group">
+                    <input name="username" type="text" class="form-control" placeholder="Enter Username">
+                </div>
+                <div class="input-group">
+                    <input name="password" type="password" class="form-control" placeholder="Enter Password">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" name="login" type="submit">Submit</button>
+                    </span>
+                </div>
+            </form>
+        <?php
+        }
+        ?>
         
         <!-- /.search form -->
     </div>

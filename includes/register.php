@@ -4,7 +4,7 @@
 
 <?php
 
-if(isset($_POST['login'])){
+if(isset($_POST['register'])){
    $username = $_POST['username'];
    $password = $_POST['password'];
 
@@ -12,6 +12,7 @@ if(isset($_POST['login'])){
    $username = mysqli_real_escape_string($connection, $username);
    $password = mysqli_real_escape_string($connection, $password);
 
+   //check if username already exists
    $query = "SELECT * FROM users WHERE user_username = '{$username}'";
    $select_user_query = mysqli_query($connection, $query);
 
@@ -34,7 +35,7 @@ if(isset($_POST['login'])){
        $_SESSION['lastname'] = $db_lastname; 
        $_SESSION['user_role'] = $db_user_role; 
        
-       header("Location: ../index.php");
+       header("Location: ../admin");
    } else {
        header("Location: ../index.php");
    }

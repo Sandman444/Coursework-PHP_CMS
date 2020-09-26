@@ -22,7 +22,7 @@
 
         confirm($create_post_query);
 
-        header("Refresh:0; url=posts.php");
+        header("Refresh:0; url=view_all_posts.php");
     }
 ?>
 
@@ -57,9 +57,17 @@
     </div>
 
     <div class="form-group">
-        <label for="post_status">Post Status</label>
-        <input type="text" name="post_status" class="form-control">
-    </div>
+		<select name="post_status" id="">
+			<option value='<?php echo $post_status;?>'><?php echo $post_status;?></option> 
+			<?php 
+				if($post_status == 'published'){
+					echo "<option value='draft'>draft</option>";
+				}else{
+					echo "<option value='published'>published</option>";
+				}
+			?>
+		</select>
+	</div>
 
     <div class="form-group">
         <label for="post_image">Post Image</label>
@@ -73,7 +81,7 @@
 
     <div class="form-group">
         <label for="post_content">Post Content</label>
-        <textarea name="post_content" id="" cols="30" rows="10" class="form-control"></textarea>
+        <textarea name="post_content" id="editor" cols="30" rows="10" class="form-control"></textarea>
     </div>
 
     <div class="form-group">
