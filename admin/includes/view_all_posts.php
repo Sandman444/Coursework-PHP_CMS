@@ -31,7 +31,7 @@ if(isset($_POST['checkBoxArray'])){
     </div>
     <div class="col-xs-4">
         <input type="submit" name="submit" value="Apply" class="btn btn-success">
-        <a href="add_post.php" class="btn btn-primary">Add New</a>
+        <a href="posts.php?source=add_post" class="btn btn-primary">Add New</a>
     </div>
     <table class="table table-bordered table-hover">
         <thead>
@@ -81,7 +81,7 @@ if(isset($_POST['checkBoxArray'])){
                 
                 echo "<td>{$post_id}</td>";
                 insertCatagory($post_catagory_id);               
-                echo "<td>{$post_title}</td>";               
+                echo "<td><a href='../post.php?p_id={$post_id}'>{$post_title}</a></td>";               
                 echo "<td>{$post_author}</td>";
                 echo "<td>{$post_date}</td>";
                 echo "<td><img class='img-responsive' src='../images/$post_image'></td>";
@@ -89,7 +89,7 @@ if(isset($_POST['checkBoxArray'])){
                 echo "<td>{$post_comment_count}</td>";
                 echo "<td>{$post_status}</td>";
                 echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
-                echo "<td><a href='posts.php?delete={$post_id}'>Delete</a></td>";
+                echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete?')\" href='posts.php?delete={$post_id}'>Delete</a></td>";
 
                 echo "</tr>";
                 }

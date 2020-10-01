@@ -14,39 +14,43 @@
         $user_image = $row['user_image'];
         $user_email = $row['user_email'];
         $user_role = $row['user_role'];
+        $salt = $row['randSalt'];
     }
+    
 
     if(isset($_POST['update_user'])){
-        $user_username = $_POST['user_username'];
-        $user_password = $_POST['user_password'];  
-        $user_firstname = $_POST['user_firstname'];                   
-        $user_lastname = $_POST['user_lastname'];          
+        $username = $_POST['user_username'];
+        $password = $_POST['user_password'];  
+        $firstname = $_POST['user_firstname'];                   
+        $lastname = $_POST['user_lastname'];          
                 
-        $user_image = $_FILES['user_image']['name'];
-        $user_image_temp = $_FILES['user_image']['tmp_name'];
+        $image = $_FILES['user_image']['name'];
+        $image_temp = $_FILES['user_image']['tmp_name'];
 
-        $user_email = $_POST['user_email'];
-        $user_role = $_POST['user_role'];
+        $email = $_POST['user_email'];
+        $role = $_POST['user_role'];
 
-        move_uploaded_file($user_image_temp, "../images/$user_image");
-        if(empty($user_image)){
+        $password = crypt($password, $salt);
+
+        move_uploaded_file($image_temp, "../images/$image");
+        if(empty($image)){
             $query = "SELECT * FROM users WHERE user_id = $user_id";
             $selected_image = mysqli_query($connection, $query);
             
             while($row = mysqli_fetch_array($selected_image)){
-                $user_image = $row['user_image'];
+                $image = $row['user_image'];
             }
         }
 
 
         $query = "UPDATE users SET ";
-        $query .= "user_firstname = '{$user_firstname}', ";
-        $query .= "user_lastname = '{$user_lastname}', ";
-        $query .= "user_username = '{$user_username}', ";
-        $query .= "user_password = '{$user_password}', ";
-        $query .= "user_email = '{$user_email}', ";
-        $query .= "user_image = '{$user_image}', ";
-        $query .= "user_role = '{$user_role}' ";
+        $query .= "user_firstname = '{$firstname}', ";
+        $query .= "user_lastname = '{$lastname}', ";
+        $query .= "user_username = '{$username}', ";
+        $query .= "user_password = '{$password}', ";
+        $query .= "user_email = '{$email}', ";
+        $query .= "user_image = '{$image}', ";
+        $query .= "user_role = '{$role}' ";
         $query .= "WHERE user_id = {$user_id}";
         //echo $query;
         $update_user = mysqli_query($connection, $query);

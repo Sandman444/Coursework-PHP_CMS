@@ -3,7 +3,7 @@
         $post_title = $_POST['post_title'];
         $post_author = $_POST['post_author'];  
         $post_catagory_id = $_POST['post_catagory_id'];
-        echo $post_catagory_id;                    
+                
         $post_status = $_POST['post_status'];          
                 
         $post_image = $_FILES['post_image']['name'];
@@ -20,9 +20,10 @@
         $query .= "VALUES('{$post_catagory_id}', '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}', '{$post_comment_count}', '{$post_status}')";
         $create_post_query = mysqli_query($connection, $query);
 
-        confirm($create_post_query);
+        //confirm($create_post_query);
 
-        header("Refresh:0; url=view_all_posts.php");
+        header("Location: posts.php");
+        echo "change page to all";
     }
 ?>
 
@@ -58,14 +59,9 @@
 
     <div class="form-group">
 		<select name="post_status" id="">
-			<option value='<?php echo $post_status;?>'><?php echo $post_status;?></option> 
-			<?php 
-				if($post_status == 'published'){
-					echo "<option value='draft'>draft</option>";
-				}else{
-					echo "<option value='published'>published</option>";
-				}
-			?>
+			<option value="draft">Post Status</option>
+            <option value="published">published</option>
+            <option value="draft">draft</option>
 		</select>
 	</div>
 

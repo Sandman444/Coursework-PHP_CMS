@@ -171,7 +171,7 @@
                                     if($element_count[$i] > 0){
                                         echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
                                     }
-                                }              
+                                }             
                             ?>
                             ]);
 
