@@ -17,7 +17,7 @@
             $username = mysqli_real_escape_string($connection, $username);
             $email = mysqli_real_escape_string($connection, $email);
             $password = mysqli_real_escape_string($connection, $password);
-            $defaultUserRole = "subscriber";
+            $defaultUserRole = "admin";
 
             //encrypt the password
             $query = "SELECT randSalt FROM users";

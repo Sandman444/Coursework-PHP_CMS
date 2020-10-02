@@ -16,6 +16,15 @@
 ?>
 
         <div class="row">
+            <!-- Portfolio Intro -->
+            <div class="col-md-8">
+                <h3>Note for those viewing</h3>
+                <p>Project has both normal subscriber features and admin features.</p>
+                <p>Subscriber: Please click register on the sidebar or navbar.</p>
+                <p>Admin: Use aswilson as username and 4444 as password (please delete any changes you make in admin).</p>      
+                <hr>        
+            </div>
+
             <!-- Blog Entries Column -->
             <div class="col-md-8">
                 
